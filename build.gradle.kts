@@ -20,10 +20,18 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly("com.mysql:mysql-connector-j")
+
+    // Jakarta validations
+    implementation("jakarta.validation:jakarta.validation-api:3.1.0")
+    implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
+
+    // Environment variables
+    implementation("me.paulschwarz:spring-dotenv:4.0.0")
 }
 
 kotlin {
