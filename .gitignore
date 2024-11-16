@@ -38,3 +38,6 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+### Environment variables ###
+/src/main/resources/application.env
