@@ -1,10 +1,10 @@
 package com.vraj.cityconnect.request
 
 import com.vraj.cityconnect.model.User
+import com.vraj.cityconnect.util.PasswordEncoder
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
-import org.springframework.security.crypto.password.PasswordEncoder
 
 data class RegisterRequest(
     @field:NotBlank(message = "Full name cannot be blank")
@@ -22,6 +22,6 @@ data class RegisterRequest(
     fun toUser(passwordEncoder: PasswordEncoder): User = User(
         name = userName,
         email = email,
-        password = passwordEncoder.encode(password)
+        password = passwordEncoder.hashPassword(password)
     )
 }

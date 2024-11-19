@@ -8,7 +8,7 @@ import com.vraj.cityconnect.request.LoginRequest
 import com.vraj.cityconnect.request.RegisterRequest
 import com.vraj.cityconnect.response.LoginResponse
 import com.vraj.cityconnect.response.RegisterResponse
-import org.springframework.security.crypto.password.PasswordEncoder
+import com.vraj.cityconnect.util.PasswordEncoder
 import org.springframework.stereotype.Service
 
 interface AuthService {
@@ -34,7 +34,7 @@ class AuthServiceImpl(
 
     override fun loginUser(request: LoginRequest): LoginResponse {
         userRepository.findByEmail(request.email)?.let {
-            if (!passwordEncoder.matches(request.password, it.password))
+            if (!passwordEncoder.checkPassword(request.password, it.password))
                 throw PasswordNotMatchingException(request.email)
         } ?: throw UserNotFoundException(request.email)
         return LoginResponse.success()
