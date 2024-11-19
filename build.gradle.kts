@@ -6,11 +6,11 @@ plugins {
 }
 
 group = "com.vraj"
-version = "0.0.1-SNAPSHOT"
+version = "1"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -21,17 +21,14 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("com.mysql:mysql-connector-j")
+    implementation("org.mindrot:jbcrypt:0.4")
 
     // Jakarta validations
     implementation("jakarta.validation:jakarta.validation-api:3.1.0")
     implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
-
-    // Environment variables
-    implementation("me.paulschwarz:spring-dotenv:4.0.0")
 }
 
 kotlin {
