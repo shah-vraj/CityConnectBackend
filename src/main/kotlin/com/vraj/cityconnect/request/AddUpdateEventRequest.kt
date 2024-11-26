@@ -2,6 +2,7 @@ package com.vraj.cityconnect.request
 
 import com.vraj.cityconnect.enums.Country
 import com.vraj.cityconnect.model.Event
+import org.springframework.web.multipart.MultipartFile
 import java.time.LocalTime
 
 data class AddUpdateEventRequest(
@@ -10,15 +11,17 @@ data class AddUpdateEventRequest(
     val description: String,
     val startTime: LocalTime?,
     val endTime: LocalTime?,
-    val country: Country
+    val country: Country,
+    val image: MultipartFile? = null
 ) {
 
-    fun toEvent() = Event(
+    fun toEvent(imageUrl: String? = null) = Event(
         id = id,
         title = title,
         description = description,
         startTime = startTime,
         endTime = endTime,
-        country = country
+        country = country,
+        imageUrl = imageUrl
     )
 }

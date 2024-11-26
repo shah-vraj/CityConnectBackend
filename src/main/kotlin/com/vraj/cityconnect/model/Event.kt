@@ -32,5 +32,8 @@ data class Event(
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val country: Country = Country.OTHER
+    val country: Country = Country.OTHER,
+
+    @Column(nullable = true)
+    val imageUrl: String? = null
 )
