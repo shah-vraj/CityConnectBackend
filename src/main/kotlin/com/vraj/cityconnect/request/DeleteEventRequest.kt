@@ -1,5 +1,5 @@
 package com.vraj.cityconnect.request
 
 data class DeleteEventRequest(
-    val id: Long
+    val id: Long = 0
 )

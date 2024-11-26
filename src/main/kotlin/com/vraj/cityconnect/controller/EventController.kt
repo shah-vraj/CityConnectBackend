@@ -5,20 +5,26 @@ import com.vraj.cityconnect.request.DeleteEventRequest
 import com.vraj.cityconnect.response.BooleanResponseBody
 import com.vraj.cityconnect.response.GetEventsResponse
 import com.vraj.cityconnect.service.EventService
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestPart
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.multipart.MultipartFile
 
 @RestController
 @RequestMapping("api/v1/event")
 class EventController(private val eventService: EventService) {
 
-    @PostMapping("/add")
-    fun addEvent(@RequestBody request: AddUpdateEventRequest): ResponseEntity<BooleanResponseBody> {
-        val body = eventService.addEvent(request)
+    @PostMapping("/add", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
+    fun addEvent(
+        @RequestPart("event") eventRequest: AddUpdateEventRequest,
+        @RequestPart("image", required = false) image: MultipartFile?
+    ): ResponseEntity<BooleanResponseBody> {
+        val body = eventService.addEvent(eventRequest.copy(image = image))
         return ResponseEntity.ok(body)
     }
 
@@ -28,9 +34,12 @@ class EventController(private val eventService: EventService) {
         return ResponseEntity.ok(body)
     }
 
-    @PostMapping("/update")
-    fun updateEvent(@RequestBody request: AddUpdateEventRequest): ResponseEntity<BooleanResponseBody> {
-        val body = eventService.updateEvent(request)
+    @PostMapping("/update", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
+    fun updateEvent(
+        @RequestPart("event") eventRequest: AddUpdateEventRequest,
+        @RequestPart("image", required = false) image: MultipartFile?
+    ): ResponseEntity<BooleanResponseBody> {
+        val body = eventService.updateEvent(eventRequest.copy(image = image))
         return ResponseEntity.ok(body)
     }
 

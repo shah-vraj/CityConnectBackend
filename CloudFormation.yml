@@ -229,6 +229,11 @@ Resources:
             -e DB_URL=jdbc:mysql://${RDSInstance.Endpoint.Address}:3306/${DBName} \
             -e DB_USERNAME=${DBUsername} \
             -e DB_PASSWORD=${DBPassword} \
+            -e S3_BUCKET_NAME=${S3BucketName} \
+            -e S3_REGION=${AWS::Region} \
+            -e AWS_ACCESS=<UPDATE_ACCESS_KEY_HERE> \
+            -e AWS_SECRET=<UPDATE_SECRET_KEY_HERE> \
+            -e AWS_SESSION_TOKEN=<UPDATE_SESSION_TOKEN_HERE> \
             ${ECRImageUri}
 
   S3Bucket:

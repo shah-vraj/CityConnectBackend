@@ -1,5 +1,6 @@
 package com.vraj.cityconnect.util
 
+import com.vraj.cityconnect.exception.EventNotFoundException
 import com.vraj.cityconnect.exception.UserAlreadyRegisteredException
 import com.vraj.cityconnect.exception.UserNotFoundException
 import com.vraj.cityconnect.response.ErrorResponseBody
@@ -35,4 +36,9 @@ class GlobalControllerAdvice {
     fun handleUserAlreadyRegisteredException(exception: UserAlreadyRegisteredException): ResponseEntity<ErrorResponseBody> =
         AuthControllerAdvice.handleUserAlreadyRegisteredException(exception)
     // end region
+
+    // Region: EventControllerAdvice
+    @ExceptionHandler(EventNotFoundException::class)
+    fun handleEventNotFoundException(exception: EventNotFoundException): ResponseEntity<ErrorResponseBody> =
+        EventControllerAdvice.handleEventNotFoundException(exception)
 }
