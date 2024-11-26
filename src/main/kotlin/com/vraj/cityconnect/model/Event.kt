@@ -9,24 +9,28 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import java.time.LocalTime
 
 @Entity
-@Table(name = "user")
-data class User(
+@Table(name = "event")
+data class Event(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long = 0,
 
     @Column(nullable = false)
-    val name: String = "",
+    val title: String = "",
+
+    @Column(nullable = false)
+    val description: String = "",
+
+    @Column(nullable = true)
+    val startTime: LocalTime? = null,
+
+    @Column(nullable = true)
+    val endTime: LocalTime? = null,
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val country: Country = Country.OTHER,
-
-    @Column(nullable = false)
-    val email: String = "",
-
-    @Column(nullable = false)
-    val password: String = ""
+    val country: Country = Country.OTHER
 )
