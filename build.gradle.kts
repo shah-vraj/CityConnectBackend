@@ -30,9 +30,9 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:3.1.0")
     implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
 
-    // AWS S3
-//    implementation("com.amazonaws:aws-java-sdk-s3:1.12.778")
+    // AWS
     implementation("software.amazon.awssdk:s3:2.29.21")
+    implementation("software.amazon.awssdk:sns:2.29.21")
 }
 
 kotlin {
