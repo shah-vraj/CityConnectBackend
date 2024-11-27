@@ -9,7 +9,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import java.time.LocalTime
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "event")
@@ -25,10 +25,10 @@ data class Event(
     val description: String = "",
 
     @Column(nullable = true)
-    val startTime: LocalTime? = null,
+    val startTime: LocalDateTime? = null,
 
     @Column(nullable = true)
-    val endTime: LocalTime? = null,
+    val endTime: LocalDateTime? = null,
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
