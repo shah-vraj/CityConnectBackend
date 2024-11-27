@@ -5,7 +5,9 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @ConfigurationProperties(prefix = "aws.s3")
-class S3ConfigProperties {
+class AwsProperties {
+
+    lateinit var accountId: String
     lateinit var bucketName: String
     lateinit var region: String
     lateinit var accessKey: String

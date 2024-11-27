@@ -5,13 +5,13 @@ import org.springframework.context.annotation.Configuration
 import software.amazon.awssdk.auth.credentials.AwsSessionCredentials
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider
 import software.amazon.awssdk.regions.Region
-import software.amazon.awssdk.services.s3.S3Client
+import software.amazon.awssdk.services.sns.SnsClient
 
 @Configuration
-class S3Config(private val awsProperties: AwsProperties) {
+class SnsConfig(private val awsProperties: AwsProperties) {
 
     @Bean
-    fun s3Client(): S3Client = S3Client.builder()
+    fun snsClient(): SnsClient = SnsClient.builder()
         .region(Region.of(awsProperties.region))
         .credentialsProvider(
             StaticCredentialsProvider.create(

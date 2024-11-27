@@ -28,8 +28,9 @@ spring:
 
 aws:
   s3:
+    account-id: ${AWS_ACCOUNT_ID}
     bucket-name: ${S3_BUCKET_NAME}
-    region: ${S3_REGION}
+    region: ${AWS_REGION}
     access-key: ${AWS_ACCESS}
     secret-key: ${AWS_SECRET}
     session-token: ${AWS_SESSION_TOKEN}
